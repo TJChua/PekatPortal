@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SalesQuotationDetail_DetailView">
+      <Items Id="Items">
+        <ActionContainerViewItem Id="MyCategory" ActionContainer="MyCategory" />
+      </Items>
+    </DetailView>
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XPObject">
+              <TabbedGroup Id="Item3">
+                <LayoutGroup Id="Item2">
+                  <LayoutItem Id="SalesQuotationDetail1" ViewItem="SalesQuotationDetail1" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SalesQuotationDetail_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="MyCategory" ViewItem="MyCategory" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SalesQuotationRev_DetailView">
+      <Items Id="Items">
+        <ActionContainerViewItem Id="MyActionPrint" ActionContainer="MyActionPrint" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="SalesQuotation_ListView_Posted">
+      <Columns Id="Columns">
+        <ColumnInfo Id="PaymentTerm" PropertyName="PaymentTerm" Width="70" Index="6" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Draft">
+      <Columns Id="Columns">
+        <ColumnInfo Id="PaymentTerm" PropertyName="PaymentTerm" Width="70" Index="6" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Canceled">
+      <Columns Id="Columns">
+        <ColumnInfo Id="PaymentTerm" PropertyName="PaymentTerm" Width="70" Index="6" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XPObject">
+              <TabbedGroup Id="Item3">
+                <LayoutGroup Id="Item1">
+                  <LayoutItem Id="ShipToDef" ViewItem="ShipToDef" />
+                  <LayoutItem Id="BillToDef1" ViewItem="BillToDef" />
+                  <LayoutItem Id="BillToDef" ViewItem="BillToDef" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item2">
+                  <LayoutItem Id="SalesQuotationDetail1" ViewItem="SalesQuotationDetail1" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SalesQuotation">
+              <LayoutGroup Id="SalesQuotation_col2">
+                <LayoutItem Id="PaymentTerm" ViewItem="PaymentTerm" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

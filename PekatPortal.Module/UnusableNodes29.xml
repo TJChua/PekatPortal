@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="SalesQuotation_ListView_Posted">
+      <Columns Id="Columns">
+        <ColumnInfo Id="ShipToDef" PropertyName="ShipToDef" Width="70" Index="-1" />
+        <ColumnInfo Id="BillToDef" PropertyName="BillToDef" Width="70" Index="-1" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Draft">
+      <Columns Id="Columns">
+        <ColumnInfo Id="ShipToDef" PropertyName="ShipToDef" Width="70" Index="-1" />
+        <ColumnInfo Id="BillToDef" PropertyName="BillToDef" Width="70" Index="-1" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Canceled">
+      <Columns Id="Columns">
+        <ColumnInfo Id="ShipToDef" PropertyName="ShipToDef" Width="70" Index="-1" />
+        <ColumnInfo Id="BillToDef" PropertyName="BillToDef" Width="70" Index="-1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XPObject">
+              <TabbedGroup Id="Item3">
+                <LayoutGroup Id="Item1">
+                  <LayoutItem Id="ShipToDef" ViewItem="ShipToDef" />
+                  <LayoutItem Id="BillToDef1" ViewItem="BillToDef" />
+                  <LayoutItem Id="BillToDef" ViewItem="BillToDef" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item2">
+                  <LayoutItem Id="SalesQuotationDetail1" ViewItem="SalesQuotationDetail1" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SalesQuotation">
+              <LayoutGroup Id="SalesQuotation_col1">
+                <LayoutItem Id="PaymentTerm" ViewItem="PaymentTerm" Index="7" RelativeSize="15.384615384615385" Removed="True" />
+                <LayoutItem Id="Warranty" Index="8" RelativeSize="13.793103448275861" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesQuotation_col2">
+                <LayoutItem Id="ShipToDef" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="BillToDef" RelativeSize="11.428571428571429" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

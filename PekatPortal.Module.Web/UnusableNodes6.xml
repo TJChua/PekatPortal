@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SalesQuotation">
+              <LayoutGroup Id="SalesQuotation_col1">
+                <LayoutItem Id="Warranty" Index="12" RelativeSize="9.5808383233532926" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SalesQuotationDetail_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="MyCategory" ViewItem="MyCategory" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SalesQuotationRev_DetailView">
+      <Items Id="Items">
+        <ActionContainerViewItem Id="MyActionPrint" ActionContainer="MyActionPrint" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>

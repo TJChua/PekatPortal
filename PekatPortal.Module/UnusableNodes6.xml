@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="SalesQuotation_SalesQuotationDetail1_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="ItemCode" Index="0" />
+        <ColumnInfo Id="ItemName" SortOrder="Ascending" Index="1" />
+        <ColumnInfo Id="Quantity" Index="2" />
+        <ColumnInfo Id="UOM" Index="3" />
+        <ColumnInfo Id="Warehouse" Index="4" />
+        <ColumnInfo Id="UnitPrice" Index="5" />
+        <ColumnInfo Id="Discount" Index="6" />
+        <ColumnInfo Id="TaxCode" Index="7" />
+        <ColumnInfo Id="LineTotal" Index="8" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SalesQuotationDetail1_Group" Direction="Horizontal" RelativeSize="21.683673469387756" Caption="Item" Removed="True">
+            <LayoutItem Id="SalesQuotationDetail1" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XPObject">
+              <TabbedGroup Id="Item3">
+                <LayoutGroup Id="Item2">
+                  <LayoutItem Id="SalesQuotationDetail1" ViewItem="SalesQuotationDetail1" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SalesQuotation">
+              <LayoutGroup Id="SalesQuotation_col2">
+                <LayoutItem Id="PrjCode" ViewItem="PrjCode" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

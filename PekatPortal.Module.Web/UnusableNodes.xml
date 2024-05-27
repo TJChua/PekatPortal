@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SalesQuotation">
+              <LayoutGroup Id="SalesQuotation_col1">
+                <LayoutItem Id="CardCode" RelativeSize="10.256410256410257" />
+                <LayoutItem Id="Remark" RelativeSize="10.256410256410257" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesQuotation_col2">
+                <LayoutItem Id="PrjCode" RelativeSize="4.2735042735042734" Index="9" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

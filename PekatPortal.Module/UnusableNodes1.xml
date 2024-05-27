@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SalesOrder_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SalesOrder">
+              <LayoutGroup Id="SalesOrder_col1">
+                <LayoutItem Id="BillToAdress1" RelativeSize="24.137931034482758" Index="7" Removed="True" />
+                <LayoutItem Id="BillToDef" RelativeSize="10.344827586206897" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

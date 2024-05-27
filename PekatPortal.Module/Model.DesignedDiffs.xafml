@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="PekatPortal" Logo="">
+  <ActionDesign>
+    <Actions>
+      <Action Id="New" Index="1" />
+      <Action Id="DialogOK" ValidationContexts="ChangePassword" />
+    </Actions>
+    <ActionToContainerMapping>
+      <ActionContainer Id="My Category" IsNewNode="True" Removed="True">
+        <ActionLink ActionId="btnHistory" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="ObjectsCreation">
+        <ActionLink ActionId="btnPost" Index="1" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="Print" IsNewNode="True" />
+      <ActionContainer Id="PrintRevision" IsNewNode="True" />
+      <ActionContainer Id="ReportDetail" IsNewNode="True">
+        <ActionLink ActionId="btnGenerate" IsNewNode="True" />
+      </ActionContainer>
+    </ActionToContainerMapping>
+  </ActionDesign>
+  <NavigationItems>
+    <Items>
+      <Item Id="Administration" Index="0" Caption="Administration" IsNewNode="True" Removed="True">
+        <Items IsNewNode="True">
+          <Item Id="Company" ViewId="Company_LookupListView" IsNewNode="True" />
+          <Item Id="User" Caption="User Maintenance" ViewId="SystemUsers_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Material Request" Index="1" Caption="Material Request" ImageName="BO_Folder" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="MaterialRequest_ListView" ViewId="MaterialRequest_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="MaterialRequest_ListView_Posted" ObjectKey="" Caption="Posted Material Request" ViewId="MaterialRequest_ListView_Posted" Index="2" IsNewNode="True" />
+          <Item Id="MaterialRequest_ListView_Canceled" ObjectKey="" Caption="Canceled Material Request" ViewId="MaterialRequest_ListView_Canceled" Index="3" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Sales Order" Caption="Sales Quotation" Index="2" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="DraftSalesQuotation" Caption="Draft Sales Quotation" ViewId="SalesQuotation_ListView_Draft" Index="0" IsNewNode="True" />
+          <Item Id="SalesQuotation_ListView" Caption="Sales Quotation" Index="1" ViewId="SalesQuotation_ListView" IsNewNode="True" />
+          <Item Id="SalesQuotation_ListView_Approval" Caption="Pending Approval Sales Quotation" Index="2" ViewId="SalesQuotation_ListView_Approval" IsNewNode="True" />
+          <Item Id="SalesQuotation_ListView_Approved" Caption="Approved Sales Quotation" Index="3" ViewId="SalesQuotation_ListView_Approved" IsNewNode="True" />
+          <Item Id="SalesQuotation_ListView_Rejected" Caption="Rejected Sales Quotation" Index="4" ViewId="SalesQuotation_ListView_Rejected" IsNewNode="True" />
+          <Item Id="SalesQuotation_ListView_Posted" Caption="Posted Sales Quotation" Index="5" ViewId="SalesQuotation_ListView_Posted" IsNewNode="True" />
+          <Item Id="SalesQuotation_ListView_Canceled" Caption="Canceled Sales Quotation" Index="6" ViewId="SalesQuotation_ListView_Canceled" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Index="3" Removed="True" />
+      <Item Id="Default" ImageName="BO_Folder" IsNewNode="True" />
+      <Item Id="Listing" Caption="SAP Listing" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="SalesOrder" Caption="Sales Order" ViewId="vw_ORDR_ListView" Index="1" IsNewNode="True" />
+          <Item Id="Delivery" ViewId="vw_ODLN_ListView" Caption="Delivery" Index="2" IsNewNode="True" />
+          <Item Id="Invoice" ViewId="vw_OINV_ListView" Caption="Invoice" Index="3" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Master Data" Caption="Master Data" IsNewNode="True" Removed="True">
+        <Items IsNewNode="True">
+          <Item Id="Customer Master" Caption="Customer Master" ViewId="vw_CustomerList_ListView" IsNewNode="True" />
+          <Item Id="Inventory Master" Caption="Inventory Master" ViewId="vw_ItemList_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Report" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="CSA" Caption="Report" ViewId="ReportList_ListView" IsNewNode="True" />
+          <Item Id="Listing" ViewId="ReportDataV2_ListView" Caption="Listing" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Options DataAccessMode="Server">
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="19.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="19.1.3.0" IsNewNode="True" />
+  </SchemaModules>
+  <Validation>
+    <Rules>
+      <RuleRegularExpression Id="Password" Pattern="^(?=.*[a-zA-Z])(?=.*\d).{6,}$" TargetContextIDs="ChangePassword" TargetPropertyName="NewPassword" SkipNullOrEmptyValues="False" TargetType="DevExpress.ExpressApp.Security.ChangePasswordParameters" IsNewNode="True" />
+    </Rules>
+  </Validation>
+  <Views>
+    <DetailView Id="Attachment_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Attachment" Caption="Attachment" RelativeSize="4.4303797468354427">
+              <LayoutItem Id="Remarks" RelativeSize="100" />
+              <LayoutItem Id="SalesQuotation" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="FileAttachmentBase" RelativeSize="95.569620253164558">
+              <LayoutItem Id="File" RelativeSize="100" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Company_LookupListView" AllowNew="False" />
+    <DetailView Id="ConfirmationMsg_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ConfirmationMsg" RelativeSize="5.0666666666666664">
+              <LayoutItem Id="ActionMessage" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" RelativeSize="94.933333333333337">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="MaterialRequest_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="79.719387755102048">
+            <LayoutGroup Id="MaterialRequest" Caption="MaterialRequest" RelativeSize="23.36" Direction="Vertical">
+              <LayoutGroup Id="Auto78601938-cdf9-43a2-a58a-a7773a46792b" ShowCaption="False" Caption="Auto78601938-cdf9-43a2-a58a-a7773a46792b(4)" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Autoc0abf4c4-636d-4ee7-86c4-4aa41b3af0eb" ShowCaption="False" Caption="Autoc0abf4c4-636d-4ee7-86c4-4aa41b3af0eb(5)" Index="0" RelativeSize="49.708284714119017" IsNewNode="True">
+                  <LayoutItem Id="DocNum" ViewItem="DocNum" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="DocDate" ViewItem="DocDate" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="Reference" ViewItem="Reference" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="RequiredDate" ViewItem="RequiredDate" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto5a0032b3-406c-4a6b-bf06-9f74e5198834" ShowCaption="False" Caption="Auto5a0032b3-406c-4a6b-bf06-9f74e5198834(9)" Index="1" RelativeSize="50.291715285880983" IsNewNode="True">
+                  <LayoutItem Id="Status" ViewItem="Status" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="PrjCode" ViewItem="PrjCode" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="RequestedBy" ViewItem="RequestedBy" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="Remark" ViewItem="Remark" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="MaterialRequest_col1" Index="1" RelativeSize="24.963715529753266" Caption="MaterialRequest_col1" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="DocDate" Index="0" RelativeSize="75" Removed="True" />
+                <LayoutItem Id="Status" Index="0" RelativeSize="100" Removed="True" />
+                <LayoutItem Id="DocNum" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="MaterialRequest_col2" Index="1" RelativeSize="50.072568940493468" Caption="MaterialRequest_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="PrjCode" RelativeSize="50" Removed="True" />
+                <LayoutItem Id="Reference" RelativeSize="100" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" RelativeSize="76.64" Caption="Oid" Direction="Horizontal" Index="1">
+              <LayoutItem Id="Oid" RelativeSize="100" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="MaterialRequestDetail1_Group" Direction="Vertical" RelativeSize="20.280612244897959">
+            <LayoutItem Id="MaterialRequestDetail1" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="MaterialRequest_ListView_Canceled" ClassName="PekatPortal.Module.BusinessObjects.MaterialRequest" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="PrjCode" PropertyName="PrjCode" Width="70" Index="5" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="MaterialRequest_ListView_Posted" ClassName="PekatPortal.Module.BusinessObjects.MaterialRequest" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="PrjCode" PropertyName="PrjCode" Width="70" Index="5" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="MaterialRequestDetail1_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="MaterialRequestDetail1" RelativeSize="16.266666666666666">
+              <LayoutGroup Id="MaterialRequestDetail1_col1" RelativeSize="50">
+                <LayoutItem Id="ItemCode" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="ItemName" RelativeSize="27.272727272727273" />
+                <LayoutItem Id="Quantity" RelativeSize="36.363636363636367" />
+              </LayoutGroup>
+              <LayoutGroup Id="MaterialRequestDetail1_col2" RelativeSize="50">
+                <LayoutItem Id="UOM" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="Warehouse" RelativeSize="63.636363636363633" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" RelativeSize="83.733333333333334">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Reports_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="btnGenerate" Caption="Generate" ActionContainer="ReportDetail" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Reports" RelativeSize="16.226415094339622">
+              <LayoutItem Id="DocDate" RelativeSize="37.2093023255814" />
+              <LayoutItem Id="CardCodeFrom" RelativeSize="27.906976744186046" />
+              <LayoutItem Id="CardCodeTo" RelativeSize="34.883720930232556" />
+            </LayoutGroup>
+            <LayoutItem Id="btnGenerate" ViewItem="btnGenerate" Index="1" RelativeSize="5.283018867924528" IsNewNode="True" />
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" RelativeSize="78.490566037735846" Index="2">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="99.8861047835991">
+            <LayoutGroup Id="SalesQuotation" RelativeSize="33.0672748004561">
+              <LayoutGroup Id="SalesQuotation_col1" RelativeSize="62.350597609561753">
+                <LayoutItem Id="DocNum" RelativeSize="12.5" Index="0" />
+                <LayoutItem Id="DocDate" RelativeSize="13.043478260869565" Index="1" Removed="True" />
+                <LayoutItem Id="DocEntry" Index="1" RelativeSize="9.375" ViewItem="DocEntry" IsNewNode="True" />
+                <LayoutItem Id="CardName" RelativeSize="9.375" Index="2" />
+                <LayoutItem Id="Reference" RelativeSize="9.375" Index="3" />
+                <LayoutItem Id="Price" ViewItem="Price" Index="4" RelativeSize="9.375" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Delivery" ViewItem="Delivery" Index="5" RelativeSize="9.375" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="ContactPerson" RelativeSize="9.375" Index="6" />
+                <LayoutItem Id="Remark" ViewItem="Remark" Index="6" RelativeSize="8.5714285714285712" Removed="True" />
+                <LayoutItem Id="Name" Index="7" RelativeSize="9.375" />
+                <LayoutItem Id="Tel1" ViewItem="Tel1" Index="8" RelativeSize="9.375" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Email" ViewItem="Email" Index="9" RelativeSize="12.5" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="DocDueDate" Removed="True" />
+                <LayoutItem Id="Validity" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesQuotation_col2" RelativeSize="37.649402390438247" Caption="SalesQuotation_col2">
+                <LayoutItem Id="BillToAdress4" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="ShipToAdress1" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="ShipToAdress2" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="ShipToAdress3" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="ShipToAdress4" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="Status" Index="0" RelativeSize="12.5" ViewItem="Status" IsNewNode="True" />
+                <LayoutItem Id="BillToAdress3" Index="1" RelativeSize="11.538461538461538" Removed="True" />
+                <LayoutItem Id="DocDate" ViewItem="DocDate" Index="1" RelativeSize="9.375" IsNewNode="True" />
+                <LayoutItem Id="DocDueDate" ViewItem="DocDueDate" Index="2" RelativeSize="9.375" IsNewNode="True" />
+                <LayoutItem Id="Validity" ViewItem="Validity" Index="3" RelativeSize="9.375" IsNewNode="True" />
+                <LayoutItem Id="Discount" Index="4" RelativeSize="10.344827586206897" Removed="True" />
+                <LayoutItem Id="GrandTotal" Index="4" RelativeSize="55.172413793103445" Removed="True" />
+                <LayoutItem Id="TaxAmount" Index="4" RelativeSize="10.344827586206897" Removed="True" />
+                <LayoutItem Id="Warranty" Index="4" RelativeSize="9.375" ViewItem="Warranty" IsNewNode="True" />
+                <LayoutItem Id="PaymentTerm" ViewItem="PaymentTerm" Index="5" RelativeSize="9.375" IsNewNode="True" />
+                <LayoutItem Id="SlpCode" Index="6" RelativeSize="9.375" />
+                <LayoutItem Id="Approver" ViewItem="Approver" Index="7" RelativeSize="9.375" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="ApproverPost" Index="8" RelativeSize="9.375" />
+                <LayoutItem Id="DiscountAmt" Index="9" RelativeSize="13.223140495867769" Removed="True" />
+                <LayoutItem Id="Remark" ViewItem="Remark" Index="9" RelativeSize="12.5" IsNewNode="True" />
+                <LayoutItem Id="BillToAdress1" RelativeSize="15.384615384615385" Removed="True" />
+                <LayoutItem Id="BillToAdress2" RelativeSize="15.238095238095237" Removed="True" />
+                <LayoutItem Id="TotalBeforeDiscount" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" ShowCaption="False" Caption="Item" Index="1" RelativeSize="66.9327251995439" IsNewNode="True" Removed="True">
+              <LayoutItem Id="Header" ViewItem="Header" Index="0" RelativeSize="12.265758091993186" IsNewNode="True" />
+              <TabbedGroup Id="Item3" CaptionLocation="Top" Index="1" RelativeSize="47.87052810902896" IsNewNode="True">
+                <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Item" Direction="Vertical" IsNewNode="True">
+                  <LayoutItem Id="SalesQuotationDetail" ViewItem="SalesQuotationDetail" Index="0" RelativeSize="89.959839357429715" IsNewNode="True" />
+                  <LayoutItem Id="SalesQuotationDetail1" ViewItem="SalesQuotationDetail1" Index="1" RelativeSize="10.040160642570282" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" Caption="Logistic" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="BillToDef" ViewItem="BillToDef" Index="0" RelativeSize="0.40160642570281124" IsNewNode="True" />
+                  <LayoutItem Id="BillToDef1" ViewItem="BillToDef" Index="1" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="BillToAdress1" ViewItem="BillToAdress1" Index="2" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="BillToAdress2" ViewItem="BillToAdress2" Index="3" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="BillToAdress3" ViewItem="BillToAdress3" Index="4" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="BillToAdress4" ViewItem="BillToAdress4" Index="5" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="ShipToDef" ViewItem="ShipToDef" Index="6" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="ShipToAdress1" ViewItem="ShipToAdress1" Index="7" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="ShipToAdress2" ViewItem="ShipToAdress2" Index="8" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="ShipToAdress3" ViewItem="ShipToAdress3" Index="9" RelativeSize="9.63855421686747" IsNewNode="True" />
+                  <LayoutItem Id="ShipToAdress4" ViewItem="ShipToAdress4" Index="10" RelativeSize="12.85140562248996" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" Caption="Revision" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="SalesQuotationRev" ViewItem="SalesQuotationRev" Index="0" RelativeSize="100" IsNewNode="True" />
+                </LayoutGroup>
+              </TabbedGroup>
+              <LayoutItem Id="PredefinedText" ViewItem="PredefinedText" Index="2" RelativeSize="4.0885860306643949" IsNewNode="True" />
+              <LayoutItem Id="Footer" ViewItem="Footer" Index="3" RelativeSize="15.332197614991483" ShowCaption="False" IsNewNode="True" />
+              <LayoutGroup Id="Autoaa28c4a7-7ff6-49f5-a279-825a66927b84" ShowCaption="False" Caption="Autoaa28c4a7-7ff6-49f5-a279-825a66927b84(30)" Direction="Horizontal" Index="4" RelativeSize="20.442930153321978" IsNewNode="True">
+                <LayoutItem Id="Item4" Index="0" RelativeSize="26.045627376425855" IsNewNode="True" />
+                <LayoutGroup Id="Autob674f062-01ea-4cf2-a5f0-36c8c70a4266" ShowCaption="False" Caption="Autob674f062-01ea-4cf2-a5f0-36c8c70a4266(32)" Index="1" RelativeSize="73.954372623574145" IsNewNode="True">
+                  <LayoutItem Id="TotalBeforeDiscount" ViewItem="TotalBeforeDiscount" Index="0" RelativeSize="25" IsNewNode="True" />
+                  <LayoutGroup Id="Auto8f5f1b03-4de2-4079-9330-2e024f9da316" ShowCaption="False" Caption="Auto8f5f1b03-4de2-4079-9330-2e024f9da316(45)" Direction="Horizontal" Index="1" RelativeSize="30" IsNewNode="True">
+                    <LayoutItem Id="Discount" ViewItem="Discount" Index="0" RelativeSize="47.300771208226223" IsNewNode="True" />
+                    <LayoutItem Id="DiscountAmt" ViewItem="DiscountAmt" Index="1" RelativeSize="52.699228791773777" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="TaxAmount" ViewItem="TaxAmount" Index="2" RelativeSize="20" IsNewNode="True" />
+                  <LayoutItem Id="GrandTotal" ViewItem="GrandTotal" Index="3" RelativeSize="25" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="0.11389521640091116" Caption="SizeableEditors" Direction="Horizontal">
+            <LayoutItem Id="Footer" RelativeSize="100" Index="0" Removed="True" />
+            <LayoutItem Id="Header" RelativeSize="50" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="5.3125" Removed="True">
+            <LayoutGroup Id="SalesQuotationDetail" RelativeSize="100" Removed="True">
+              <LayoutItem Id="SalesQuotationDetail" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="SalesQuotationRev" Removed="True" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="SalesQuotation_ListView" Caption="Sales Quotation" />
+    <ListView Id="SalesQuotation_ListView_Approval" ClassName="PekatPortal.Module.BusinessObjects.SalesQuotation" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Approver" PropertyName="Approver" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ApproverPost" PropertyName="ApproverPost" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress" PropertyName="BillToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress1" PropertyName="BillToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress2" PropertyName="BillToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress3" PropertyName="BillToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress4" PropertyName="BillToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CardCode" PropertyName="CardCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Company" PropertyName="Company" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CompanyFax" PropertyName="CompanyFax" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CompanyPhone" PropertyName="CompanyPhone" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ContactPerson" PropertyName="ContactPerson" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Currency" PropertyName="Currency" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppLevel" PropertyName="CurrentAppLevel" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppTmp" PropertyName="CurrentAppTmp" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppTmpName" PropertyName="CurrentAppTmpName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrRate" PropertyName="CurrRate" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DeliveryCode" PropertyName="DeliveryCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Discount" PropertyName="Discount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DiscountAmt" PropertyName="DiscountAmt" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocDueDate" PropertyName="DocDueDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocEntry" PropertyName="DocEntry" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Email" PropertyName="Email" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Escalate" PropertyName="Escalate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Footer" PropertyName="Footer" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Header" PropertyName="Header" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsCanceled" PropertyName="IsCanceled" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Name" PropertyName="Name" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaymentTermName" PropertyName="PaymentTermName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PostRevision" PropertyName="PostRevision" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PredefinedText" PropertyName="PredefinedText" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Price" PropertyName="Price" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="RevisionNo" PropertyName="RevisionNo" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress" PropertyName="ShipToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress1" PropertyName="ShipToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress2" PropertyName="ShipToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress3" PropertyName="ShipToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress4" PropertyName="ShipToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TaxAmount" PropertyName="TaxAmount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Tel1" PropertyName="Tel1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TotalBeforeDiscount" PropertyName="TotalBeforeDiscount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Validity" PropertyName="Validity" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Warranty" PropertyName="Warranty" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="WarrantyCode" PropertyName="WarrantyCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="CardName" PropertyName="CardName" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="SlpCode" PropertyName="SlpCode" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="GrandTotal" PropertyName="GrandTotal" Width="50" Index="6" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Approved" ClassName="PekatPortal.Module.BusinessObjects.SalesQuotation" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Approver" PropertyName="Approver" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ApproverPost" PropertyName="ApproverPost" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress" PropertyName="BillToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress1" PropertyName="BillToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress2" PropertyName="BillToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress3" PropertyName="BillToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress4" PropertyName="BillToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CardCode" PropertyName="CardCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Company" PropertyName="Company" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CompanyFax" PropertyName="CompanyFax" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CompanyPhone" PropertyName="CompanyPhone" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ContactPerson" PropertyName="ContactPerson" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Currency" PropertyName="Currency" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppLevel" PropertyName="CurrentAppLevel" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppTmp" PropertyName="CurrentAppTmp" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppTmpName" PropertyName="CurrentAppTmpName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrRate" PropertyName="CurrRate" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DeliveryCode" PropertyName="DeliveryCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Discount" PropertyName="Discount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DiscountAmt" PropertyName="DiscountAmt" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocDueDate" PropertyName="DocDueDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocEntry" PropertyName="DocEntry" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Email" PropertyName="Email" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Escalate" PropertyName="Escalate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Footer" PropertyName="Footer" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Header" PropertyName="Header" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsCanceled" PropertyName="IsCanceled" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Name" PropertyName="Name" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaymentTermName" PropertyName="PaymentTermName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PostRevision" PropertyName="PostRevision" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PredefinedText" PropertyName="PredefinedText" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Price" PropertyName="Price" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="RevisionNo" PropertyName="RevisionNo" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress" PropertyName="ShipToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress1" PropertyName="ShipToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress2" PropertyName="ShipToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress3" PropertyName="ShipToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress4" PropertyName="ShipToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TaxAmount" PropertyName="TaxAmount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Tel1" PropertyName="Tel1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TotalBeforeDiscount" PropertyName="TotalBeforeDiscount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Validity" PropertyName="Validity" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Warranty" PropertyName="Warranty" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="WarrantyCode" PropertyName="WarrantyCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="CardName" PropertyName="CardName" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="SlpCode" PropertyName="SlpCode" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="GrandTotal" PropertyName="GrandTotal" Width="50" Index="6" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Canceled" ClassName="PekatPortal.Module.BusinessObjects.SalesQuotation" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="BillToAdress" PropertyName="BillToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress1" PropertyName="BillToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress2" PropertyName="BillToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress3" PropertyName="BillToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress4" PropertyName="BillToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Company" PropertyName="Company" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Discount" PropertyName="Discount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DiscountAmt" PropertyName="DiscountAmt" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Footer" PropertyName="Footer" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Header" PropertyName="Header" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsCanceled" PropertyName="IsCanceled" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaymentTermName" PropertyName="PaymentTermName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PredefinedText" PropertyName="PredefinedText" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Price" PropertyName="Price" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress" PropertyName="ShipToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress1" PropertyName="ShipToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress2" PropertyName="ShipToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress3" PropertyName="ShipToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress4" PropertyName="ShipToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TaxAmount" PropertyName="TaxAmount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TotalBeforeDiscount" PropertyName="TotalBeforeDiscount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Validity" PropertyName="Validity" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Warranty" PropertyName="Warranty" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CardName" PropertyName="CardName" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="DocDueDate" PropertyName="DocDueDate" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="SlpCode" PropertyName="SlpCode" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="GrandTotal" PropertyName="GrandTotal" Width="50" Index="9" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Draft" ClassName="PekatPortal.Module.BusinessObjects.SalesQuotation" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="BillToAdress" PropertyName="BillToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress1" PropertyName="BillToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress2" PropertyName="BillToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress3" PropertyName="BillToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress4" PropertyName="BillToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Company" PropertyName="Company" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Discount" PropertyName="Discount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DiscountAmt" PropertyName="DiscountAmt" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Footer" PropertyName="Footer" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Header" PropertyName="Header" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsCanceled" PropertyName="IsCanceled" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaymentTermName" PropertyName="PaymentTermName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PredefinedText" PropertyName="PredefinedText" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Price" PropertyName="Price" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress" PropertyName="ShipToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress1" PropertyName="ShipToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress2" PropertyName="ShipToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress3" PropertyName="ShipToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress4" PropertyName="ShipToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TaxAmount" PropertyName="TaxAmount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TotalBeforeDiscount" PropertyName="TotalBeforeDiscount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Validity" PropertyName="Validity" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Warranty" PropertyName="Warranty" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CardName" PropertyName="CardName" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="DocDueDate" PropertyName="DocDueDate" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="SlpCode" PropertyName="SlpCode" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="GrandTotal" PropertyName="GrandTotal" Width="50" Index="9" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Posted" ClassName="PekatPortal.Module.BusinessObjects.SalesQuotation" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="BillToAdress" PropertyName="BillToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress1" PropertyName="BillToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress2" PropertyName="BillToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress3" PropertyName="BillToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress4" PropertyName="BillToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Company" PropertyName="Company" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Discount" PropertyName="Discount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DiscountAmt" PropertyName="DiscountAmt" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Footer" PropertyName="Footer" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Header" PropertyName="Header" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsCanceled" PropertyName="IsCanceled" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaymentTermName" PropertyName="PaymentTermName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PredefinedText" PropertyName="PredefinedText" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Price" PropertyName="Price" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress" PropertyName="ShipToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress1" PropertyName="ShipToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress2" PropertyName="ShipToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress3" PropertyName="ShipToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress4" PropertyName="ShipToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TaxAmount" PropertyName="TaxAmount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TotalBeforeDiscount" PropertyName="TotalBeforeDiscount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Validity" PropertyName="Validity" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Warranty" PropertyName="Warranty" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CardName" PropertyName="CardName" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="DocDueDate" PropertyName="DocDueDate" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="SlpCode" PropertyName="SlpCode" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="GrandTotal" PropertyName="GrandTotal" Width="50" Index="9" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_ListView_Rejected" ClassName="PekatPortal.Module.BusinessObjects.SalesQuotation" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Approver" PropertyName="Approver" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ApproverPost" PropertyName="ApproverPost" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress" PropertyName="BillToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress1" PropertyName="BillToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress2" PropertyName="BillToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress3" PropertyName="BillToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BillToAdress4" PropertyName="BillToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CardCode" PropertyName="CardCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Company" PropertyName="Company" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CompanyFax" PropertyName="CompanyFax" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CompanyPhone" PropertyName="CompanyPhone" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ContactPerson" PropertyName="ContactPerson" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Currency" PropertyName="Currency" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppLevel" PropertyName="CurrentAppLevel" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppTmp" PropertyName="CurrentAppTmp" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrentAppTmpName" PropertyName="CurrentAppTmpName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="CurrRate" PropertyName="CurrRate" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DeliveryCode" PropertyName="DeliveryCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Discount" PropertyName="Discount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DiscountAmt" PropertyName="DiscountAmt" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocDueDate" PropertyName="DocDueDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocEntry" PropertyName="DocEntry" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Email" PropertyName="Email" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Escalate" PropertyName="Escalate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Footer" PropertyName="Footer" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Header" PropertyName="Header" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsCanceled" PropertyName="IsCanceled" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="IsPost" PropertyName="IsPost" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Name" PropertyName="Name" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaymentTermName" PropertyName="PaymentTermName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PostRevision" PropertyName="PostRevision" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PredefinedText" PropertyName="PredefinedText" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Price" PropertyName="Price" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Remark" PropertyName="Remark" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="RevisionNo" PropertyName="RevisionNo" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress" PropertyName="ShipToAdress" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress1" PropertyName="ShipToAdress1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress2" PropertyName="ShipToAdress2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress3" PropertyName="ShipToAdress3" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ShipToAdress4" PropertyName="ShipToAdress4" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TaxAmount" PropertyName="TaxAmount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Tel1" PropertyName="Tel1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="TotalBeforeDiscount" PropertyName="TotalBeforeDiscount" Width="50" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Validity" PropertyName="Validity" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Warranty" PropertyName="Warranty" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="WarrantyCode" PropertyName="WarrantyCode" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DocNum" PropertyName="DocNum" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="CardName" PropertyName="CardName" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Reference" PropertyName="Reference" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="SlpCode" PropertyName="SlpCode" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="GrandTotal" PropertyName="GrandTotal" Width="50" Index="6" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesQuotation_SalesQuotationDetail_ListView">
+      <Columns>
+        <ColumnInfo Id="TaxCode" Width="92" />
+        <ColumnInfo Id="Warehouse" Width="0" />
+        <ColumnInfo Id="ItemName" SortOrder="None" SortIndex="-1" Width="441" />
+        <ColumnInfo Id="ItemCode" SortIndex="0" SortOrder="Ascending" Width="129" />
+        <ColumnInfo Id="Quantity" Width="62" />
+        <ColumnInfo Id="UOM" Width="64" />
+        <ColumnInfo Id="UnitPrice" Width="103" />
+        <ColumnInfo Id="Discount" Width="113" />
+        <ColumnInfo Id="LineTotal" SortIndex="-1" SortOrder="None" Width="160" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SalesQuotationDetail_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="My Category" Caption="My Category" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="36.086956521739133">
+            <LayoutItem Id="My Category" ViewItem="My Category" Index="0" RelativeSize="14.457831325301205" IsNewNode="True" />
+            <LayoutGroup Id="SalesQuotationDetail" RelativeSize="85.5421686746988" Index="1">
+              <LayoutGroup Id="SalesQuotationDetail_col1" RelativeSize="49.930069930069934">
+                <LayoutItem Id="ItemCode" RelativeSize="17.391304347826086" />
+                <LayoutItem Id="ItemName" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="SuppCatNum" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="Quantity" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="UOM" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="Brand" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="Warehouse" RelativeSize="17.391304347826086" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesQuotationDetail_col2" RelativeSize="50.069930069930066">
+                <LayoutItem Id="UnitPrice" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="Discount" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="DiscountAmt" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="TaxCode" RelativeSize="13.043478260869565" />
+                <LayoutItem Id="LineTotal" RelativeSize="30.434782608695652" />
+                <LayoutItem Id="SalesQuotation" RelativeSize="23.529411764705884" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" RelativeSize="46.753246753246756" Index="2" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="63.913043478260867">
+            <LayoutItem Id="ItemDetail" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="SalesQuotationDetail_ListView" DataAccessMode="Client" />
+    <DetailView Id="SOReport_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="SOReport" RelativeSize="8.2666666666666675">
+              <LayoutItem Id="DateFrom" RelativeSize="51.612903225806448" />
+              <LayoutItem Id="DateTo" RelativeSize="48.387096774193552" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" RelativeSize="91.733333333333334">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Statement_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Statement" RelativeSize="5.0666666666666664">
+              <LayoutItem Id="DocDate" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" RelativeSize="94.933333333333337">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="vw_CustomerList_DetailView" ObjectCaptionFormat="" />
+    <DetailView Id="vw_ItemList_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="22.166246851385392">
+            <LayoutGroup Id="vw_ItemList" RelativeSize="100">
+              <LayoutGroup Id="Auto8193fc7a-203c-4478-98de-485ea9637cb2" ShowCaption="False" Caption="Auto8193fc7a-203c-4478-98de-485ea9637cb2(4)" Direction="Vertical" Index="0" RelativeSize="43.735498839907194" IsNewNode="True">
+                <LayoutGroup Id="Auto136f38cd-004d-46ec-8a9e-723ac221b94d" ShowCaption="False" Caption="Auto136f38cd-004d-46ec-8a9e-723ac221b94d(5)" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="ItemCode" ViewItem="ItemCode" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                  <LayoutItem Id="ItemGroup" ViewItem="ItemGroup" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="UOM" ViewItem="UOM" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="BrandName" ViewItem="BrandName" Index="3" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="TaxCode" ViewItem="TaxCode" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="vw_ItemList_col1" Index="1" RelativeSize="14.501160092807425" Caption="vw_ItemList_col1" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="ItemGroup" Index="0" RelativeSize="100" Removed="True" />
+                <LayoutItem Id="UOM" Index="0" RelativeSize="100" Removed="True" />
+                <LayoutItem Id="TaxCode" ViewItem="TaxCode" Index="1" RelativeSize="99.2" Removed="True" />
+                <LayoutItem Id="ItemCode" RelativeSize="32.8125" Removed="True" />
+                <LayoutItem Id="ItemName" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="vw_ItemList_col2" Index="1" RelativeSize="56.264501160092806" Caption="vw_ItemList_col2" Direction="Vertical">
+                <LayoutItem Id="ItemName" ViewItem="ItemName" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="OnHand" ViewItem="OnHand" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Committed" ViewItem="Committed" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Ordered" ViewItem="Ordered" Index="3" RelativeSize="41.1764705882353" IsNewNode="True" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="vw_ItemWarehouse_Group" Direction="Vertical" RelativeSize="77.8337531486146">
+            <LayoutItem Id="vw_ItemWarehouse" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="vw_ORDR_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="vw_ORDR" RelativeSize="100">
+              <LayoutGroup Id="vw_ORDR_col1" RelativeSize="50">
+                <LayoutItem Id="DocDate" RelativeSize="5.2892561983471076" />
+                <LayoutItem Id="DocDueDate" RelativeSize="3.9669421487603307" />
+                <LayoutItem Id="DocNum" RelativeSize="3.9669421487603307" />
+                <LayoutItem Id="CardCode" ViewItem="CardCode" Index="3" RelativeSize="86.776859504132233" IsNewNode="True" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="vw_ORDR_col2" RelativeSize="50">
+                <LayoutItem Id="Status" RelativeSize="3.9669421487603307" />
+                <LayoutItem Id="Memo" RelativeSize="3.9669421487603307" />
+                <LayoutItem Id="Comments" RelativeSize="86.776859504132233" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

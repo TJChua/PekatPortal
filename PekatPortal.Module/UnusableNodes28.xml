@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="PriceHistory_ListView" DataAccessMode="Client">
+      <Columns Id="Columns">
+        <ColumnInfo Id="CardName" Width="215" />
+        <ColumnInfo Id="DocNum" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SalesQuotation_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XPObject">
+              <TabbedGroup Id="Item3">
+                <LayoutGroup Id="Item2">
+                  <LayoutItem Id="SalesQuotationDetail1" ViewItem="SalesQuotationDetail1" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+  <ActionDesign Id="ActionDesign">
+    <Actions Id="Actions">
+      <Action Id="btnPost" Index="2" />
+    </Actions>
+    <ActionToContainerMapping Id="ActionToContainerMapping">
+      <ActionContainer Id="Unspecified">
+        <ActionLink ActionId="btnPost" Removed="True" />
+      </ActionContainer>
+    </ActionToContainerMapping>
+  </ActionDesign>
+</Application>

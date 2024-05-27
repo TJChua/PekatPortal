@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SalesOrder_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SalesOrder">
+              <LayoutGroup Id="SalesOrder_col1">
+                <LayoutItem Id="Discount" RelativeSize="12.5" Index="0" Removed="True" />
+                <LayoutItem Id="GrandTotal" RelativeSize="15.384615384615385" Index="0" Removed="True" />
+                <LayoutItem Id="TaxAmount" RelativeSize="13.793103448275861" Index="0" Removed="True" />
+                <LayoutItem Id="TotalBeforeDiscount" RelativeSize="11.428571428571429" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesOrder_col2">
+                <LayoutItem Id="BillToAdress1" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="BillToAdress2" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="BillToAdress3" RelativeSize="11.428571428571429" Index="0" Removed="True" />
+                <LayoutItem Id="BillToDef" RelativeSize="11.428571428571429" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="vw_ItemList_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="vw_ItemList">
+              <LayoutItem Id="ItemGroup" Index="1" RelativeSize="27.906976744186046" Removed="True" />
+              <LayoutItem Id="UOM" Index="2" RelativeSize="34.883720930232556" Removed="True" />
+              <LayoutItem Id="ItemCode" Removed="True" />
+              <LayoutItem Id="ItemName" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

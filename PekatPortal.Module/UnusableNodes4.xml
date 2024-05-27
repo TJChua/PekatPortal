@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SalesOrderDetail_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="SalesOrderDetail" RelativeSize="22.666666666666668">
+              <LayoutGroup Id="SalesOrderDetail_col1" RelativeSize="50">
+                <LayoutItem Id="ItemCode" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="ItemName" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Quantity" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="UOM" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Warehouse" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesOrderDetail_col2" RelativeSize="50">
+                <LayoutItem Id="UnitPrice" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Discount" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="TaxCode" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="LineTotal" RelativeSize="41.1764705882353" />
+                <LayoutItem Id="SalesOrder" RelativeSize="23.529411764705884" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" RelativeSize="77.333333333333329">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="SalesOrder_ListView_Posted">
+      <Columns Id="Columns">
+        <ColumnInfo Id="PrjCode" PropertyName="PrjCode" Width="70" Index="8" />
+      </Columns>
+    </ListView>
+    <ListView Id="SalesOrder_ListView_Canceled">
+      <Columns Id="Columns">
+        <ColumnInfo Id="PrjCode" PropertyName="PrjCode" Width="70" Index="8" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SalesOrder_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SalesOrder">
+              <LayoutGroup Id="SalesOrder_col2">
+                <LayoutItem Id="PrjCode" ViewItem="PrjCode" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
