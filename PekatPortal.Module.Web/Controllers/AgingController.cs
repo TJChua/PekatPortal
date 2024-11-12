@@ -175,12 +175,12 @@ namespace PekatPortal.Module.Web.Controllers
                     {
                         //    NameValuePair2
                         //string Connection = "DRIVER ={HDBODBC32}; SERVERNODE = " + user.Company.B1Server + "; DATABASE = " + user.Company.B1CompanyDB + "";
-                        string strConnection = "DRIVER = {HDBODBC32}; UID =" + user.Company.B1DbUserName; //string de conexion contruido de las variables
+                        string strConnection = "DRIVER = {HDBODBC}; UID =" + user.Company.B1DbUserName; //string de conexion contruido de las variables
                         strConnection += "; PWD =" + user.Company.B1DbPassword + "; SERVERNODE =" + user.Company.B1Server;
                         strConnection += "; DATABASE =" + user.Company.B1CompanyDB + ";";
                         NameValuePairs2 logonProps2 = doc.DataSourceConnections[0].LogonProperties;
-                        logonProps2.Set("Provider", "HDBODBC32");
-                        logonProps2.Set("Server Type", "HDBODBC32");
+                        logonProps2.Set("Provider", "HDBODBC");
+                        logonProps2.Set("Server Type", "HDBODBC");
                         logonProps2.Set("Connection String", strConnection);
                         logonProps2.Set("Locale Identifier", "1033");
                         doc.DataSourceConnections[0].SetLogonProperties(logonProps2);
@@ -278,14 +278,14 @@ namespace PekatPortal.Module.Web.Controllers
 
                 //    NameValuePair2
                 //string Connection = "DRIVER ={HDBODBC32}; SERVERNODE = " + user.Company.B1Server + "; DATABASE = " + user.Company.B1CompanyDB + "";
-                string strConnection = "DRIVER = {HDBODBC32}; UID =" + user.Company.B1DbUserName; //string de conexion contruido de las variables
-                strConnection += "; PWD =" + user.Company.B1DbPassword + "; SERVERNODE =" + user.Company.B1Server;
+                string strConnection = "DRIVER = {HDBODBC}; UID =" + user.Company.B1DbUserName; //string de conexion contruido de las variables
+                strConnection += "; PWD =" + user.Company.B1DbPassword + "; SERVERNODE = 10.1.20.8:30015";
                 strConnection += "; DATABASE =" + user.Company.B1CompanyDB + ";";
                 NameValuePairs2 logonProps2 = doc.DataSourceConnections[0].LogonProperties;
-                logonProps2.Set("Provider", "HDBODBC32");
-                logonProps2.Set("Server Type", "HDBODBC32");
+                logonProps2.Set("Provider", "HDBODBC");
+                logonProps2.Set("Server Type", "HDBODBC");
                 logonProps2.Set("Connection String", strConnection);
-                logonProps2.Set("Locale Identifier", "1033");
+                //logonProps2.Set("Locale Identifier", "1033");
                 doc.DataSourceConnections[0].SetLogonProperties(logonProps2);
 
                 //doc.DataSourceConnections[0].SetConnection(user.Company.B1Server, user.Company.B1CompanyDB, user.Company.B1DbUserName, user.Company.B1DbPassword);

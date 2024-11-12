@@ -1068,7 +1068,7 @@ namespace PekatPortal.Module.BusinessObjects
 
                 if (Session.IsNewObject(this))
                 {
-                    CreateUser = Session.GetObjectByKey<SystemUsers>(SecuritySystem.CurrentUserId).FullName.ToString();
+                    CreateUser = Session.GetObjectByKey<SystemUsers>(SecuritySystem.CurrentUserId).Oid.ToString();
                     CreateDate = DateTime.Now;
                     Company = Session.FindObject<Company>(CriteriaOperator.Parse("Oid", user.Company.Oid));
                     CurrentAppLevel = "0";
@@ -1103,7 +1103,7 @@ namespace PekatPortal.Module.BusinessObjects
                     }
                     //if (Status == StatusEnum.Rejected) ? Update reject document or approval reject 
                     //Status = StatusEnum.Open;
-                    UpdateUser = Session.GetObjectByKey<SystemUsers>(SecuritySystem.CurrentUserId).FullName.ToString();
+                    UpdateUser = Session.GetObjectByKey<SystemUsers>(SecuritySystem.CurrentUserId).Oid.ToString();
                     UpdateDate = DateTime.Now;
                 }
             }

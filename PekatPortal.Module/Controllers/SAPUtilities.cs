@@ -99,7 +99,7 @@ namespace PekatPortal.Module.Controllers
                     if (View.Id == "SalesQuotation_ListView_Draft")
                     {
                         // OR Escalate
-                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status=? AND (CreateUser =? OR SlpCode =? OR Escalate =?)", 0, user.Oid, user.SalesPersonCode.SlpCode, user.Oid);
+                        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("Status=? AND (CreateUser =? OR SlpCode =? OR Escalate =?)", 0, user.Oid.ToString(), user.SalesPersonCode.SlpCode, user.Oid);
                         //View.
                     }
                     if (View.Id == "SalesQuotation_ListView")
@@ -123,7 +123,7 @@ namespace PekatPortal.Module.Controllers
                         criteria = CriteriaOperator.Parse("[<Approval>][^.Oid = SalesQuotation]");
                         criteria = GroupOperator.And(criteria, new BinaryOperator("Status", 3));
                         criteria = GroupOperator.And(criteria, CriteriaOperator.Parse("[<Approval>][Status = 'Pending']"));
-                        criteria = GroupOperator.And(criteria, CriteriaOperator.Parse("([<Approval>][Approver = '" + user.Oid + "'] OR SlpCode = ? OR CreateUser = ? OR UpdateUser =?)", user.SalesPersonCode.SlpCode, user.Oid, user.Oid));
+                        criteria = GroupOperator.And(criteria, CriteriaOperator.Parse("([<Approval>][Approver = '" + user.Oid + "'] OR SlpCode = ? OR CreateUser = ? OR UpdateUser =?)", user.SalesPersonCode.SlpCode, user.Oid.ToString(), user.Oid.ToString()));
                         //criteria = GroupOperator.Or(criteria, new BinaryOperator("SlpCode", ) + ")");
                         ((ListView)View).CollectionSource.Criteria["Filter1"] = criteria;
                     }

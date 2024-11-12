@@ -368,7 +368,7 @@ namespace PekatPortal.Module.BusinessObjects
         {
             get
             {
-                //_LineTotal = (Quantity * _UnitPriceAfDisc) - DiscountAmt;
+                _LineTotal = (Quantity * _UnitPriceAfDisc) - DiscountAmt;
                 return _LineTotal;
             }
             set { SetPropertyValue("LineTotal", ref _LineTotal, value); }
